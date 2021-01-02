@@ -25,15 +25,19 @@ void algorithm(Map &map)
 			path.pop_back();
 		}
 			
-
-		if (path[path.size() - 1]->isFinish) 
+		if(path.size() == 0)
+			path.push_back(map.nodes[map.startPoint[0]][map.startPoint[1]]);
+		else 
 		{
-			done = true;
-		}
-		else if (path[path.size() - 1]->value > map.nodes[ map.finishPoint[0] ] [ map.finishPoint[1] ]->value)
-		{
-			path[path.size() - 1]->isTested = true;
-			path.pop_back();
+			if (path[path.size() - 1]->isFinish)
+			{
+				done = true;
+			}
+			else if (path[path.size() - 1]->value > map.nodes[map.finishPoint[0]][map.finishPoint[1]]->value)
+			{
+				path[path.size() - 1]->isTested = true;
+				path.pop_back();
+			}
 		}
 		/*
 		cout << "-------------------------------------------------------------------" << endl;

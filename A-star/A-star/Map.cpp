@@ -45,13 +45,13 @@ Map::Map(int size)
 		{
 			for (int j = 0; j < size; j++)
 			{
-				if (i - 1 > 0 && !(this->nodes[i - 1][j]->isObsticle))
+				if (i - 1 >= 0 && !(this->nodes[i - 1][j]->isObsticle))
 					this->nodes[i][j]->neighbours.push_back(this->nodes[i - 1][j]);
 
 				if (i + 1 < size && !(this->nodes[i + 1][j]->isObsticle))
 					this->nodes[i][j]->neighbours.push_back(this->nodes[i + 1][j]);
 
-				if (j - 1 > 0 && !(this->nodes[i][j - 1]->isObsticle))
+				if (j - 1 >= 0 && !(this->nodes[i][j - 1]->isObsticle))
 					this->nodes[i][j]->neighbours.push_back(this->nodes[i][j - 1]);
 
 				if (j + 1 < size && !(this->nodes[i][j + 1]->isObsticle))
