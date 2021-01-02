@@ -1,7 +1,1 @@
-﻿  A-star.cpp
-D:\docs\githubRepo\A-star-master\A-star\A-star\A-star.cpp(13,21): warning C4018: '<': signed/unsigned mismatch
-D:\docs\githubRepo\A-star-master\A-star\A-star\A-star.cpp(51,20): warning C4018: '<': signed/unsigned mismatch
-  Map.cpp
-D:\docs\githubRepo\A-star-master\A-star\A-star\Map.cpp(103,23): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  A-star.vcxproj -> D:\docs\githubRepo\A-star-master\A-star\Debug\A-star.exe
+﻿  A-star.vcxproj -> D:\docs\githubRepo\A-star-master\A-star\A-star\Debug\A-star.exe

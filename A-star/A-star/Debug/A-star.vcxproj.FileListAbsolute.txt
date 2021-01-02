@@ -1,0 +1,2 @@
+D:\docs\githubRepo\A-star-master\A-star\A-star\Debug\A-star.exe
+D:\docs\githubRepo\A-star-master\A-star\A-star\Debug\A-star.pdb
