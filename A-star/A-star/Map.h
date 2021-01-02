@@ -27,7 +27,7 @@ public:
 };
 
 
-class Map 
+class Map
 {
 public:
 	vector<vector<Node*>> nodes;

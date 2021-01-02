@@ -1,6 +1,6 @@
 #include "Map.h"
 
-void algorithm(Map &map)
+void algorithm(Map& map)
 {
 	bool done = false;
 	vector<Node*> path;
@@ -8,7 +8,7 @@ void algorithm(Map &map)
 
 	while (!done)
 	{
-		
+
 		int bestNeighbour = -1;
 		for (int i = 0; i < (path[path.size() - 1]->neighbours.size()); i++)
 		{
@@ -24,10 +24,10 @@ void algorithm(Map &map)
 			path[path.size() - 1]->isTested = true;
 			path.pop_back();
 		}
-			
-		if(path.size() == 0)
+
+		if (path.size() == 0)
 			path.push_back(map.nodes[map.startPoint[0]][map.startPoint[1]]);
-		else 
+		else
 		{
 			if (path[path.size() - 1]->isFinish)
 			{
@@ -48,7 +48,7 @@ void algorithm(Map &map)
 		cout << "-------------------------------------------------------------------" << endl;
 		*/
 	}
-	for (int i = 0; i < path.size() ; i++)
+	for (int i = 0; i < path.size(); i++)
 	{
 		path[i]->isPathPart = true;
 	}
