@@ -56,14 +56,143 @@ void algorithm(Map& map)
 	}
 }
 
-int main()
+class Program 
 {
 	sf::RenderWindow window;
-	window.create(sf::VideoMode(100, 100), "main");
-	Map map(10);
-	map.setValues();
-	map.show();
-	algorithm(map);
-	map.show();
+	sf::Event event;
+	Map *map;
+public:
+	Program() 
+	{
+		this->map = new Map(10);
+		//this->map->setValues();
+		//algorithm(*map);
+	}
+	void updateMap() 
+	{
+		for (int i = 0; i < map->size; i++)
+		{
+			for (int j = 0; j < map->size; j++)
+			{
+				map->nodes[i][j]->isPathPart = false;
+				map->nodes[i][j]->isTested = false;
+				map->nodes[i][j]->value = INF;
+				map->nodes[map->startPoint[0]][map->startPoint[1]]->value = 0;
+			}
+		}
+		this->map->setValues();
+		algorithm(*map);
+	}
+
+	void render()
+	{
+		drawMap();
+	}
+
+	void drawMap()
+	{
+		sf::RectangleShape tile;
+		tile.setSize(sf::Vector2f(window.getSize().x / map->size, window.getSize().x / map->size));
+		window.clear();
+		for (int i = 0; i < map->size; i++)
+		{
+			for (int j = 0; j < map->size; j++)
+			{
+				tile.setPosition(window.getSize().x / map->size * j, window.getSize().x / map->size * i);
+				if (map->nodes[i][j]->isObsticle)
+				{
+					tile.setFillColor(sf::Color::Red);
+					window.draw(tile);
+				}
+				else if (map->nodes[i][j]->isPathPart)
+				{
+					tile.setFillColor(sf::Color::Blue);
+					window.draw(tile);
+				}
+				else
+				{
+					tile.setFillColor(sf::Color::Black);
+					window.draw(tile);
+				}
+			}
+		}
+		tile.setPosition(window.getSize().x / map->size * map->finishPoint[1], window.getSize().x / map->size * map->finishPoint[0]);
+		tile.setFillColor(sf::Color::Green);
+		window.draw(tile);
+		tile.setPosition(window.getSize().x / map->size * map->startPoint[1], window.getSize().x / map->size * map->startPoint[0]);
+		tile.setFillColor(sf::Color::Yellow);
+		window.draw(tile);
+
+		window.display();
+	}
+
+	void handleEvents()
+	{
+		while (window.pollEvent(event))
+		{
+			switch (event.type)
+			{
+			case sf::Event::Closed:
+				window.close();
+				break;
+
+			case sf::Event::MouseButtonPressed:
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+				{
+					sf::Vector2i mPos = sf::Mouse::getPosition(window);
+					int mPosx = sf::Mouse::getPosition(window).x / map->size;
+					int mPosy = sf::Mouse::getPosition(window).y / map->size;
+					if ((mPos.x / (window.getSize().x / map->size) < map->size) &&
+						(mPos.y / (window.getSize().x / map->size) < map->size) &&
+						(mPos.x / (window.getSize().x / map->size) >= 0) &&
+						(mPos.y / (window.getSize().x / map->size) >= 0)) 
+					{
+						if(!map->nodes[mPos.y / (window.getSize().x / map->size)][mPos.x / (window.getSize().x / map->size)]->isStart &&
+							!map->nodes[mPos.y / (window.getSize().x / map->size)][mPos.x / (window.getSize().x / map->size)]->isFinish
+							)
+						map->nodes[mPos.y / (window.getSize().x / map->size)][mPos.x / (window.getSize().x / map->size)]->isObsticle =
+						!map->nodes[mPos.y / (window.getSize().x / map->size)][mPos.x / (window.getSize().x / map->size)]->isObsticle;
+					}
+				}
+				break;
+
+			case sf::Event::KeyPressed:
+				if (event.key.code == sf::Keyboard::Q)
+					window.close();
+				break;
+
+			default: break;
+			}
+		}
+	}
+
+	void loop()
+	{
+		while (window.isOpen()) 
+		{
+			render();
+			handleEvents();
+			updateMap();
+		}
+	}
+
+	void init()
+	{
+		window.create(sf::VideoMode(500, 600), "main");
+		window.setFramerateLimit(60);
+	}
+};
+
+int main()
+{
+	Program prog;
+	prog.init();
+	
+	//Map map(10);
+	//map.setValues();
+	//algorithm(map);
+	//prog.createMap();
+	prog.loop();
+	//system("pause");
 }
 

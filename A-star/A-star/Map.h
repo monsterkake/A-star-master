@@ -31,12 +31,12 @@ class Map
 {
 public:
 	vector<vector<Node*>> nodes;
-	const vector<vector<int>> tiles =
+	vector<vector<int>> tiles =
 	{
 		{0,0,0,0,0,0,0,0,0,0},
-		{0,0,0,0,0,0,0,0,0,0},
-		{0,0,0,0,0,1,0,0,0,0},
-		{0,0,0,0,0,1,0,0,0,0},
+		{0,1,0,0,0,1,0,0,0,0},
+		{0,0,1,0,0,1,0,0,0,0},
+		{1,0,0,1,1,1,0,0,0,0},
 		{0,0,0,0,0,1,0,0,0,3},
 		{0,1,1,1,1,1,1,1,1,1},
 		{0,1,0,0,0,1,0,0,0,0},
@@ -49,6 +49,7 @@ public:
 
 	int size;
 	Map(int size);
+	Map(int size, vector<vector<int>>);
 
 	void setValues();
 

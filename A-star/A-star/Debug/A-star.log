@@ -1,1 +1,54 @@
-﻿  A-star.vcxproj -> D:\docs\githubRepo\A-star-master\A-star\A-star\Debug\A-star.exe
+﻿  main.cpp
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(15,21): warning C4018: '<': signed/unsigned mismatch
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(53,20): warning C4018: '<': signed/unsigned mismatch
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(95,80): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(95,48): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(101,89): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(101,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(119,105): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(119,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(122,104): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(122,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(145,53): warning C4018: '<': signed/unsigned mismatch
+D:\docs\githubRepo\A-star-master\A-star\A-star\main.cpp(146,50): warning C4018: '<': signed/unsigned mismatch
+  A-star.vcxproj -> D:\docs\githubRepo\A-star-master\A-star\A-star\Debug\A-star.exe

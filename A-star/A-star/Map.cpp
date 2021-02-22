@@ -60,6 +60,40 @@ Map::Map(int size)
 	}
 };
 
+Map::Map(int size, vector<vector<int>> tiles)
+{
+	this->tiles = tiles;
+	this->size = size;
+	nodes.clear();
+
+	for (int i = 0; i < size; i++)
+	{
+
+		vector<Node*> tempNodeVector;
+		for (int j = 0; j < size; j++)
+		{
+			Node* tempNode = new Node();
+			if (tiles[i][j] == OBSTICLE)
+				tempNode->isObsticle = true;
+			else if (tiles[i][j] == START)
+			{
+				tempNode->isStart = true;
+				tempNode->value = 0;
+				this->startPoint = { i,j };
+			}
+			else if (tiles[i][j] == FINISH)
+			{
+				tempNode->isFinish = true;
+				this->finishPoint = { i,j };
+			}
+			tempNodeVector.push_back(tempNode);
+		}
+		this->nodes.push_back(tempNodeVector);
+	}
+
+	
+};
+
 void Map::show()
 {
 	cout << "-------------------------------------------------------------------" << endl;
@@ -82,17 +116,53 @@ void Map::show()
 
 Map::~Map()
 {
+	/*
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
 		{
 			delete this->nodes[i][j];
+			
 		}
 	}
+	*/
+	nodes.clear();
 }
 
 void Map::setValues()
 {
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+				this->nodes[i][j]->neighbours.clear();
+
+				this->nodes[i][j]->neighbours.clear();
+
+				this->nodes[i][j]->neighbours.clear();
+
+				this->nodes[i][j]->neighbours.clear();
+		}
+	}
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			if (i - 1 >= 0 && !(this->nodes[i - 1][j]->isObsticle))
+				this->nodes[i][j]->neighbours.push_back(this->nodes[i - 1][j]);
+
+			if (i + 1 < size && !(this->nodes[i + 1][j]->isObsticle))
+				this->nodes[i][j]->neighbours.push_back(this->nodes[i + 1][j]);
+
+			if (j - 1 >= 0 && !(this->nodes[i][j - 1]->isObsticle))
+				this->nodes[i][j]->neighbours.push_back(this->nodes[i][j - 1]);
+
+			if (j + 1 < size && !(this->nodes[i][j + 1]->isObsticle))
+				this->nodes[i][j]->neighbours.push_back(this->nodes[i][j + 1]);
+		}
+	}
+
+	this->nodes[this->finishPoint[0]][this->finishPoint[1]]->value = INF;
 	bool done = false;
 	while (!done)
 	{
